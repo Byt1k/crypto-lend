@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "zeroing";
+
+
+$activeColor: #FABF2C;
+
+:root {
+  background-color: #080E11;
+  color: #FFF;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  line-height: normal;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.container {
+  padding: 0 130px;
+  position: relative;
+  z-index: 1;
+}
+
+h1 {
+  color: #FFF;
+  font-size: 70px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 85px;
+
+  span {
+    color: $activeColor;
+  }
+}
+
+.mainLink {
+  color: #FFF;
+  font-size: 16px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  column-gap: 12px;
+
+  &, svg path {
+    transition: all .3s ease;
+  }
+
+  &:hover {
+    color: $activeColor;
+
+    svg path {
+      stroke: $activeColor;
+    }
+  }
+}
+
+.lines {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 2920px;
+  display: block;
+  z-index: 0;
+}
+
+
+

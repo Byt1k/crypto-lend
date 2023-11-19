@@ -1,0 +1,89 @@
+.backlight {
+    width: 356px;
+    height: 356px;
+    border-radius: 50%;
+    background: #253137;
+    filter: blur(175px);
+    position: absolute;
+    top: -145px;
+    left: -181px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.burger {
+    cursor: pointer;
+    position: absolute;
+    top: 85px;
+    left: 37px;
+}
+
+.menu {
+    width: 250px;
+    height: 100%;
+    background: rgba(37, 49, 55, 0.22);
+    backdrop-filter: blur(15px);
+    position: absolute;
+    top: 0;
+    left: -250px;
+    padding: 30px 25px;
+    transition: all .3s ease;
+    z-index: 10;
+
+    &.active {
+        left: 0;
+    }
+
+    &__head {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 75px;
+        margin-top: 30px;
+
+        .close {
+            cursor: pointer;
+
+            svg line {
+                transition: all .3s ease;
+            }
+
+            &:hover {
+                svg line {
+                    stroke: #FABF2C;
+                }
+            }
+        }
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        column-gap: 15px;
+        margin-bottom: 45px;
+        transition: all .3s ease;
+
+        .icon {
+            width: 23px;
+            display: flex;
+            justify-content: center;
+
+            svg {
+                max-width: 100%;
+
+                path {
+                    transition: all .3s ease;
+                }
+            }
+        }
+
+        &:hover {
+            color: #FABF2C;
+
+            svg path {
+                fill: #FABF2C;
+            }
+        }
+    }
+}
