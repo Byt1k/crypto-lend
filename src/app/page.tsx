@@ -1,25 +1,27 @@
+'use client'
+
 import BurgerMenu from '@/components/BurgerMenu'
-import s from '@/styles/Home.module.scss'
+import Offer from '@/components/HomePage/Offer'
+import Timeline from '@/components/HomePage/Timeline'
+import {useState} from 'react'
 import classnames from 'classnames'
-import MainLink from '@/components/MainLink'
+import s from '@/styles/Home.module.scss'
 
 export default function Home() {
-  return (
+    const [isScrolled, setIsScrolled] = useState(false)
+
+    return (
       <>
-          <BurgerMenu />
-          <div className={classnames('container', s.home)}>
-              <img src="/logo.svg" alt="logo" className={s.logo} />
-              <h1>
-                  History of Crypto:
-                  <span>An Interactive Journey</span>
-                  Through Time
-              </h1>
-              <p className={s.text}>From the inception of Bitcoin in 2009 to the rise of decentralized finance and beyond, delve into the transformative history of cryptocurrency and its impact on the global financial landscape. </p>
-              <MainLink>View timeline</MainLink>
+          <div className={classnames(s.animation, isScrolled && s.hidden)}>
+              <BurgerMenu />
+              <Offer setIsScrolled={setIsScrolled} />
           </div>
-          <div className="lines">
+
+          <Timeline isScrolled={isScrolled} setIsScrolled={setIsScrolled} />
+
+          <div className={classnames('lines', s.animation)}>
               <img src="/lines.svg" className="lines" alt="lines" />
           </div>
       </>
-  )
+    )
 }

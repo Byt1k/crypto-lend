@@ -12,7 +12,9 @@
     "classnames": "^2.3.2",
     "next": "14.0.3",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-multi-select-component": "^4.3.4",
+    "react-select": "^5.8.0"
   },
   "devDependencies": {
     "@types/node": "^20",
