@@ -1,6 +1,8 @@
 import s from '@/styles/Home.module.scss'
-import {FC, useState} from 'react'
+import {FC, useEffect, useState} from 'react'
 import classnames from 'classnames'
+import Link from "next/link";
+import {svgIcons} from "@/lib/svgIcons";
 
 const Event: FC<PropsType> = ({
     event,
@@ -14,6 +16,12 @@ const Event: FC<PropsType> = ({
     const eventId = event.id + segmentNumber
 
     const [eventPosition, setEventPosition] = useState('')
+
+    const [showQuizMenu, setShowQuizMenu] = useState(false)
+
+    useEffect(() => {
+        setShowQuizMenu(false)
+    }, [hoveredEventId])
 
     return (
         <div
@@ -45,10 +53,30 @@ const Event: FC<PropsType> = ({
                     <div className={s.wrap}>
                         {+event.id % 2 === 1 && (
                             <div className={s.body__actions}>
-                                <img src="/key-figure-icon.png" alt="icon"/>
-                                <img src="/quiz-icon.png" alt="icon"/>
+                                <Link href="/keyfigure/id">
+                                    <img src="/key-figure-icon.png" alt="icon"/>
+                                </Link>
+                                <img
+                                    src="/quiz-icon.png"
+                                    alt="icon"
+                                    onClick={() => setShowQuizMenu(true)}
+                                />
                             </div>
                         )}
+
+                        <div className={classnames(s.quiz, showQuizMenu && s.active)}>
+                            <div className={s.quiz__wrap}>
+                                <div
+                                    className={s.quiz__close}
+                                    onClick={() => setShowQuizMenu(false)}
+                                >
+                                    {svgIcons.modal.close}
+                                </div>
+                                <p className={s.quiz__title}>Quiz: Bitcoin's Historical Milestones</p>
+                                <Link href="/quiz" className={s.quiz__link}>Play quiz</Link>
+                            </div>
+                        </div>
+
                         <p className={s.body__date}>{event?.date}</p>
                         <p className={s.body__title}>{event?.title}</p>
                         {+event.id % 2 === 1 && <p className={s.body__desc}>{event?.desc}</p>}
