@@ -38,7 +38,7 @@ const BurgerMenu: FC = () => {
                         {svgIcons.burgerMenu.close}
                     </div>
                 </div>
-                <Link href="/timeline" className={s.menu__item}>
+                <Link href="/" className={s.menu__item}>
                     <div className={s.icon}>
                         {svgIcons.burgerMenu.timeline}
                     </div>
@@ -56,7 +56,7 @@ const BurgerMenu: FC = () => {
                     </div>
                     <span>About</span>
                 </Link>
-                <Link href="/keyfigure" className={s.menu__item}>
+                <Link href="/keyfigures" className={s.menu__item}>
                     <div className={s.icon}>
                         {svgIcons.burgerMenu.keyFigure}
                     </div>

@@ -48,4 +48,11 @@ export const svgIcons = {
             </svg>
         ),
     },
+    modal: {
+        close: (
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="14" viewBox="0 0 13 14" fill="none">
+                <path d="M11.465 1.83085L1.02836 12.2674M1.02832 1.83081L11.4649 12.2674" stroke="#EDEDED" strokeOpacity="0.62" strokeWidth="2" strokeLinecap="round"/>
+            </svg>
+        )
+    }
 }

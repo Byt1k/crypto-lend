@@ -5,6 +5,8 @@ import MainLink from '@/components/MainLink'
 import classnames from 'classnames'
 import Event from '@/components/HomePage/Event'
 import { EventType } from '@/components/HomePage/Event'
+import Modal from '@/components/Modal'
+import EventCard from '@/components/HomePage/EventCard'
 
 const events: EventType[] = [
     {
@@ -135,6 +137,8 @@ const Timeline: FC<PropsType> = ({ isScrolled, setIsScrolled }) => {
 
     const [hoveredEventId, setHoveredEventId] = useState('')
 
+    const [cardIsOpen, setCardIsOpen] = useState(false)
+
     const allYears = []
     const startYear = 2009
     const endYear = 2024
@@ -153,50 +157,63 @@ const Timeline: FC<PropsType> = ({ isScrolled, setIsScrolled }) => {
     const widthSegment = 100 / (maxViewYears.length - 1)
 
     return (
-        <div className={classnames(s.animation, s.wrapper, isScrolled && s.show)}>
-            <Filter
-                selectedFields={selectedFields}
-                setSelectedFields={setSelectedFields}
-                selectedPartners={selectedPartners}
-                setSelectedPartners={setSelectedPartners}
-                isScrolled={isScrolled}
-            />
-            <div className={s.timeline}>
-                <div className={s.mainline}>
-                    <div className={s.item}>
-                        <div className={s.date}>
-                            {allYears[0]}
-                            <div />
-                        </div>
-                    </div>
-                    {maxViewYears?.map((y, segmentNumber) => (
-                        segmentNumber !== 0 && (
-                            <div key={y} className={s.item} style={{width: `${widthSegment}%`}}>
-                                <div className={s.date}>
-                                    {y}
-                                    <div />
-                                </div>
-                                <div className={s.events}>
-                                    {events?.map((event, eventNumber) => (
-                                        <React.Fragment key={event.id + segmentNumber}>
-                                            <Event
-                                                event={event}
-                                                eventNumber={eventNumber}
-                                                hoveredEventId={hoveredEventId}
-                                                setHoveredEventId={setHoveredEventId}
-                                                segmentNumber={segmentNumber}
-                                            />
-                                        </React.Fragment>
-                                    ))}
-                                </div>
+        <>
+            <div className={classnames(s.animation, s.wrapper, isScrolled && s.show)}>
+                <Filter
+                    selectedFields={selectedFields}
+                    setSelectedFields={setSelectedFields}
+                    selectedPartners={selectedPartners}
+                    setSelectedPartners={setSelectedPartners}
+                    isScrolled={isScrolled}
+                />
+                <div className={s.timeline}>
+                    <div className={s.mainline}>
+                        <div className={s.item}>
+                            <div className={s.date}>
+                                {allYears[0]}
+                                <div />
                             </div>
-                        )
-                    ))}
+                        </div>
+                        {maxViewYears?.map((y, segmentNumber) => (
+                            segmentNumber !== 0 && (
+                                <div key={y} className={s.item} style={{width: `${widthSegment}%`}}>
+                                    <div className={s.date}>
+                                        {y}
+                                        <div />
+                                    </div>
+                                    <div className={s.events}>
+                                        {events?.map((event, eventNumber) => (
+                                            <React.Fragment key={event.id + segmentNumber}>
+                                                <Event
+                                                    event={event}
+                                                    eventNumber={eventNumber}
+                                                    hoveredEventId={hoveredEventId}
+                                                    setHoveredEventId={setHoveredEventId}
+                                                    segmentNumber={segmentNumber}
+                                                    openCard={() => setCardIsOpen(true)}
+                                                />
+                                            </React.Fragment>
+                                        ))}
+                                    </div>
+                                </div>
+                            )
+                        ))}
+                    </div>
+                    <button className={s.final}>Final Test</button>
                 </div>
-                <button className={s.final}>Final Test</button>
+                <MainLink
+                    className={classnames(s.disabledLink, !isScrolled && s.disabledLink_active)}
+                    isLink={false}
+                    onClick={() => setIsScrolled(false)}
+                    isBack={true}
+                >
+                    Back
+                </MainLink>
             </div>
-            <MainLink className={classnames(s.disabledLink, !isScrolled && s.disabledLink_active)} isLink={false} onClick={() => setIsScrolled(false)} isBack={true}>Back</MainLink>
-        </div>
+            <Modal active={cardIsOpen} setActive={setCardIsOpen}>
+                <EventCard />
+            </Modal>
+        </>
     )
 }
 

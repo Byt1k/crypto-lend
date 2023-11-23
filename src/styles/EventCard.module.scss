@@ -1,0 +1,74 @@
+@import "common.module";
+
+.card {
+  padding: 22px;
+  width: 1060px;
+  height: 385px;
+  display: flex;
+
+  .img {
+    height: 100%;
+    min-width: 500px;
+    width: 500px;
+    margin-right: 25px;
+
+    img {
+      border-radius: 12px;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .attachment {
+    display: flex;
+    column-gap: 9px;
+
+    &__item {
+      border-radius: 4px;
+      border-color: #FABF2C;
+      font-size: 10px;
+      height: 26px;
+      column-gap: 8px;
+      cursor: auto;
+
+      &:only-child {
+        cursor: pointer;
+
+        &:hover {
+          color: #121B1F;
+          background-color: #FABF2C;
+          border: 1px solid #FABF2C;
+        }
+      }
+    }
+  }
+
+  .title {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 18px 0 5px;
+  }
+
+  .date {
+    color: #FABF2C;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 24px;
+  }
+
+  .desc {
+    font-size: 12px;
+    margin: 3px 0 20px;
+  }
+
+  .btn {
+    @extend %mainBtn;
+    width: 120px;
+    height: 30px;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+    text-decoration-line: underline;
+  }
+}

@@ -1,8 +1,9 @@
-import {FC} from 'react'
-import s from '@/styles/Home.module.scss'
+import React, {FC} from 'react'
+import s from '@/styles/Filter.module.scss'
 import classnames from 'classnames'
 import { MultiSelect } from "react-multi-select-component";
 import {SelectedPartner} from "@/components/HomePage/Timeline";
+import FilterItem from "@/components/HomePage/FilterItem";
 
 const Filter: FC<PropsType> = ({
     selectedFields,
@@ -68,17 +69,12 @@ const Filter: FC<PropsType> = ({
 
     return (
         <div className={classnames(s.filter, isScrolled && s.filter_active)}>
-            <button
-                className={
-                    classnames(
-                        s.filter__item,
-                        !selectedFields?.length && s.filter__item_active,
-                    )
-                }
+            <FilterItem
+                isActive={!selectedFields?.length}
                 onClick={() => setSelectedFields([])}
             >
                 All
-            </button>
+            </FilterItem>
             <MultiSelect
                 options={partnersOptions}
                 value={selectedPartners}
@@ -91,18 +87,14 @@ const Filter: FC<PropsType> = ({
                 }}
             />
             {fields.map(item => (
-                <button
-                    key={item.id}
-                    className={
-                        classnames(
-                            s.filter__item,
-                            selectedFields.some(id => id === item.id) && s.filter__item_active
-                        )
-                    }
-                    onClick={() => toggleSelectedFields(item.id)}
-                >
-                    {item.name}
-                </button>
+                <React.Fragment key={item.id}>
+                    <FilterItem
+                        isActive={selectedFields.some(id => id === item.id)}
+                        onClick={() => toggleSelectedFields(item.id)}
+                    >
+                        {item.name}
+                    </FilterItem>
+                </React.Fragment>
             ))}
         </div>
     )

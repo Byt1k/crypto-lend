@@ -8,6 +8,7 @@ const Event: FC<PropsType> = ({
     hoveredEventId,
     setHoveredEventId,
     segmentNumber,
+    openCard,
     }) => {
     // todo: remove after id
     const eventId = event.id + segmentNumber
@@ -51,7 +52,7 @@ const Event: FC<PropsType> = ({
                         <p className={s.body__date}>{event?.date}</p>
                         <p className={s.body__title}>{event?.title}</p>
                         {+event.id % 2 === 1 && <p className={s.body__desc}>{event?.desc}</p>}
-                        <button className={s.body__btn}>Read more</button>
+                        <button className={s.body__btn} onClick={openCard}>Read more</button>
                     </div>
                 </div>
             </div>
@@ -67,6 +68,7 @@ type PropsType = {
     segmentNumber: number
     hoveredEventId: string
     setHoveredEventId: (value: string) => void
+    openCard: () => void
 }
 
 export type EventType = {
