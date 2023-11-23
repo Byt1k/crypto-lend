@@ -72,7 +72,7 @@ const Event: FC<PropsType> = ({
                                 >
                                     {svgIcons.modal.close}
                                 </div>
-                                <p className={s.quiz__title}>Quiz: Bitcoin's Historical Milestones</p>
+                                <p className={s.quiz__title}>{'Quiz: Bitcoin\'s Historical Milestones'}</p>
                                 <Link href="/quiz" className={s.quiz__link}>Play quiz</Link>
                             </div>
                         </div>
