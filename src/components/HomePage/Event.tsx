@@ -63,13 +63,13 @@ export default Event
 
 type PropsType = {
     eventNumber: number
-    event: Event
+    event: EventType
     segmentNumber: number
     hoveredEventId: string
     setHoveredEventId: (value: string) => void
 }
 
-export type Event = {
+export type EventType = {
     id: string
     date: string
     title: string

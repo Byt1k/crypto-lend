@@ -4,8 +4,9 @@ import Filter from '@/components/HomePage/Filter'
 import MainLink from '@/components/MainLink'
 import classnames from 'classnames'
 import Event from '@/components/HomePage/Event'
+import { EventType } from '@/components/HomePage/Event'
 
-const events: Event[] = [
+const events: EventType[] = [
     {
         id: '1',
         date: 'Dec. 17, 2017',
