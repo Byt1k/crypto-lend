@@ -1,12 +1,138 @@
 import s from '@/styles/Home.module.scss'
 import React, {FC, useState} from 'react'
-import Filter from "@/components/HomePage/Filter";
-import MainLink from "@/components/MainLink";
-import classnames from "classnames";
+import Filter from '@/components/HomePage/Filter'
+import MainLink from '@/components/MainLink'
+import classnames from 'classnames'
+import Event from '@/components/HomePage/Event'
+
+const events: Event[] = [
+    {
+        id: '1',
+        date: 'Dec. 17, 2017',
+        title: 'Bitcoin\'s Monumental Surge: Touching $20,000',
+        desc: 'Bitcoin\'s meteoric rise culminated in reaching the $20,000 mark, a growth of 1,950% within the year, fueled by Wall Street\'s interest and technological advancements.'
+    },
+    {
+        id: '2',
+        date: 'Dec. 17, 2017',
+        title: 'Bitcoin\'s Monumental Surge: Touching $20,000',
+        desc: 'Bitcoin\'s meteoric rise culminated in reaching the $20,000 mark, a growth of 1,950% within the year, fueled by Wall Street\'s interest and technological advancements.'
+    },
+    {
+        id: '3',
+        date: 'Dec. 17, 2017',
+        title: 'Bitcoin\'s Monumental Surge: Touching $20,000',
+        desc: 'Bitcoin\'s meteoric rise culminated in reaching the $20,000 mark, a growth of 1,950% within the year, fueled by Wall Street\'s interest and technological advancements.'
+    },
+    {
+        id: '4',
+        date: 'Dec. 17, 2017',
+        title: 'Bitcoin\'s Monumental Surge: Touching $20,000',
+        desc: 'Bitcoin\'s meteoric rise culminated in reaching the $20,000 mark, a growth of 1,950% within the year, fueled by Wall Street\'s interest and technological advancements.'
+    },
+    {
+        id: '5',
+        date: 'Dec. 17, 2017',
+        title: 'Bitcoin\'s Monumental Surge: Touching $20,000',
+        desc: 'Bitcoin\'s meteoric rise culminated in reaching the $20,000 mark, a growth of 1,950% within the year, fueled by Wall Street\'s interest and technological advancements.'
+    },
+    {
+        id: '6',
+        date: 'Dec. 17, 2017',
+        title: 'Bitcoin\'s Monumental Surge: Touching $20,000',
+        desc: 'Bitcoin\'s meteoric rise culminated in reaching the $20,000 mark, a growth of 1,950% within the year, fueled by Wall Street\'s interest and technological advancements.'
+    },
+    {
+        id: '7',
+        date: 'Dec. 17, 2017',
+        title: 'Bitcoin\'s Monumental Surge: Touching $20,000',
+        desc: 'Bitcoin\'s meteoric rise culminated in reaching the $20,000 mark, a growth of 1,950% within the year, fueled by Wall Street\'s interest and technological advancements.'
+    },
+    {
+        id: '8',
+        date: 'Dec. 17, 2017',
+        title: 'Bitcoin\'s Monumental Surge: Touching $20,000',
+        desc: 'Bitcoin\'s meteoric rise culminated in reaching the $20,000 mark, a growth of 1,950% within the year, fueled by Wall Street\'s interest and technological advancements.'
+    },
+    {
+        id: '9',
+        date: 'Dec. 17, 2017',
+        title: 'Bitcoin\'s Monumental Surge: Touching $20,000',
+        desc: 'Bitcoin\'s meteoric rise culminated in reaching the $20,000 mark, a growth of 1,950% within the year, fueled by Wall Street\'s interest and technological advancements.'
+    },
+    {
+        id: '10',
+        date: 'Dec. 17, 2017',
+        title: 'Bitcoin\'s Monumental Surge: Touching $20,000',
+        desc: 'Bitcoin\'s meteoric rise culminated in reaching the $20,000 mark, a growth of 1,950% within the year, fueled by Wall Street\'s interest and technological advancements.'
+    },
+    {
+        id: '11',
+        date: 'Dec. 17, 2017',
+        title: 'Bitcoin\'s Monumental Surge: Touching $20,000',
+        desc: 'Bitcoin\'s meteoric rise culminated in reaching the $20,000 mark, a growth of 1,950% within the year, fueled by Wall Street\'s interest and technological advancements.'
+    },
+    {
+        id: '12',
+        date: 'Dec. 17, 2017',
+        title: 'Bitcoin\'s Monumental Surge: Touching $20,000',
+        desc: 'Bitcoin\'s meteoric rise culminated in reaching the $20,000 mark, a growth of 1,950% within the year, fueled by Wall Street\'s interest and technological advancements.'
+    },
+    {
+        id: '13',
+        date: 'Dec. 17, 2017',
+        title: 'Bitcoin\'s Monumental Surge: Touching $20,000',
+        desc: 'Bitcoin\'s meteoric rise culminated in reaching the $20,000 mark, a growth of 1,950% within the year, fueled by Wall Street\'s interest and technological advancements.'
+    },
+    {
+        id: '14',
+        date: 'Dec. 17, 2017',
+        title: 'Bitcoin\'s Monumental Surge: Touching $20,000',
+        desc: 'Bitcoin\'s meteoric rise culminated in reaching the $20,000 mark, a growth of 1,950% within the year, fueled by Wall Street\'s interest and technological advancements.'
+    },
+    {
+        id: '15',
+        date: 'Dec. 17, 2017',
+        title: 'Bitcoin\'s Monumental Surge: Touching $20,000',
+        desc: 'Bitcoin\'s meteoric rise culminated in reaching the $20,000 mark, a growth of 1,950% within the year, fueled by Wall Street\'s interest and technological advancements.'
+    },
+    {
+        id: '16',
+        date: 'Dec. 17, 2017',
+        title: 'Bitcoin\'s Monumental Surge: Touching $20,000',
+        desc: 'Bitcoin\'s meteoric rise culminated in reaching the $20,000 mark, a growth of 1,950% within the year, fueled by Wall Street\'s interest and technological advancements.'
+    },
+    {
+        id: '17',
+        date: 'Dec. 17, 2017',
+        title: 'Bitcoin\'s Monumental Surge: Touching $20,000',
+        desc: 'Bitcoin\'s meteoric rise culminated in reaching the $20,000 mark, a growth of 1,950% within the year, fueled by Wall Street\'s interest and technological advancements.'
+    },
+    {
+        id: '18',
+        date: 'Dec. 17, 2017',
+        title: 'Bitcoin\'s Monumental Surge: Touching $20,000',
+        desc: 'Bitcoin\'s meteoric rise culminated in reaching the $20,000 mark, a growth of 1,950% within the year, fueled by Wall Street\'s interest and technological advancements.'
+    },
+    {
+        id: '19',
+        date: 'Dec. 17, 2017',
+        title: 'Bitcoin\'s Monumental Surge: Touching $20,000',
+        desc: 'Bitcoin\'s meteoric rise culminated in reaching the $20,000 mark, a growth of 1,950% within the year, fueled by Wall Street\'s interest and technological advancements.'
+    },
+    {
+        id: '20',
+        date: 'Dec. 17, 2017',
+        title: 'Bitcoin\'s Monumental Surge: Touching $20,000',
+        desc: 'Bitcoin\'s meteoric rise culminated in reaching the $20,000 mark, a growth of 1,950% within the year, fueled by Wall Street\'s interest and technological advancements.'
+    },
+]
 
 const Timeline: FC<PropsType> = ({ isScrolled, setIsScrolled }) => {
     const [selectedFields, setSelectedFields] = useState<string[]>([])
     const [selectedPartners, setSelectedPartners] = useState<SelectedPartner[]>([])
+
+    const [hoveredEventId, setHoveredEventId] = useState('')
 
     const allYears = []
     const startYear = 2009
@@ -42,34 +168,25 @@ const Timeline: FC<PropsType> = ({ isScrolled, setIsScrolled }) => {
                             <div />
                         </div>
                     </div>
-                    {maxViewYears?.map((y, i) => (
-                        i !== 0 && (
+                    {maxViewYears?.map((y, segmentNumber) => (
+                        segmentNumber !== 0 && (
                             <div key={y} className={s.item} style={{width: `${widthSegment}%`}}>
                                 <div className={s.date}>
                                     {y}
                                     <div />
                                 </div>
                                 <div className={s.events}>
-                                    <div className={s.events__item} style={{width: '10px', minWidth: '10px', height: '10px'}}></div>
-                                    <div className={s.events__item} style={{width: '9px', minWidth: '9px', height: '9px'}}></div>
-                                    <div className={s.events__item} style={{width: '10px', minWidth: '10px', height: '10px'}}></div>
-                                    <div className={s.events__item} style={{width: '9px', minWidth: '9px', height: '9px'}}></div>
-                                    <div className={s.events__item} style={{width: '10px', minWidth: '10px', height: '10px'}}></div>
-                                    <div className={s.events__item} style={{width: '9px', minWidth: '9px', height: '9px'}}></div>
-                                    <div className={s.events__item} style={{width: '10px', minWidth: '10px', height: '10px'}}></div>
-                                    <div className={s.events__item} style={{width: '9px', minWidth: '9px', height: '9px'}}></div>
-                                    <div className={s.events__item} style={{width: '10px', minWidth: '10px', height: '10px'}}></div>
-                                    <div className={s.events__item} style={{width: '9px', minWidth: '9px', height: '9px'}}></div>
-                                    <div className={s.events__item} style={{width: '10px', minWidth: '10px', height: '10px'}}></div>
-                                    <div className={s.events__item} style={{width: '9px', minWidth: '9px', height: '9px'}}></div>
-                                    <div className={s.events__item} style={{width: '10px', minWidth: '10px', height: '10px'}}></div>
-                                    <div className={s.events__item} style={{width: '9px', minWidth: '9px', height: '9px'}}></div>
-                                    <div className={s.events__item} style={{width: '10px', minWidth: '10px', height: '10px'}}></div>
-                                    <div className={s.events__item} style={{width: '9px', minWidth: '9px', height: '9px'}}></div>
-                                    <div className={s.events__item} style={{width: '10px', minWidth: '10px', height: '10px'}}></div>
-                                    <div className={s.events__item} style={{width: '9px', minWidth: '9px', height: '9px'}}></div>
-                                    <div className={s.events__item} style={{width: '10px', minWidth: '10px', height: '10px'}}></div>
-                                    <div className={s.events__item} style={{width: '9px', minWidth: '9px', height: '9px'}}></div>
+                                    {events?.map((event, eventNumber) => (
+                                        <React.Fragment key={event.id + segmentNumber}>
+                                            <Event
+                                                event={event}
+                                                eventNumber={eventNumber}
+                                                hoveredEventId={hoveredEventId}
+                                                setHoveredEventId={setHoveredEventId}
+                                                segmentNumber={segmentNumber}
+                                            />
+                                        </React.Fragment>
+                                    ))}
                                 </div>
                             </div>
                         )
